@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/game_navigation"
+    android:label="Main Screen"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.ubaya.adv160420013week2.MainFragment"
+        android:label="Main Screen"
+        tools:layout="@layout/fragment_main">
+        <action
+            android:id="@+id/actionGameFragment"
+            app:destination="@id/gameFragment" />
+        <argument
+            android:name="no_name"
+            app:argType="string"
+            android:defaultValue="alvin" />
+    </fragment>
+    <fragment
+        android:id="@+id/gameFragment"
+        android:name="com.ubaya.adv160420013week2.GameFragment"
+        android:label="Game Screen"
+        tools:layout="@layout/fragment_game" >
+        <argument
+            android:name="player_name"
+            app:argType="string" />
+        <argument
+            android:name="player_score"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_gameFragment_to_resultFragment"
+            app:destination="@id/resultFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/resultFragment"
+        android:name="com.ubaya.adv160420013week2.ResultFragment"
+        android:label="Game Result"
+        tools:layout="@layout/fragment_result">
+        <action
+            android:id="@+id/action_resultFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+        <argument
+            android:name="player_score"
+            app:argType="integer" />
+    </fragment>
+</navigation>
