@@ -49,6 +49,7 @@ class GameFragment : Fragment() {
                     view.findViewById<TextView>(R.id.txtNum1).text = num1.toString()
                     view.findViewById<TextView>(R.id.txtNum2).text = num2.toString()
                     playerScore += 1
+                    txtAnswer.text.clear()
                 } else {
                     val action = GameFragmentDirections.actionGameFragmentToResultFragment(playerScore)
                     Navigation.findNavController(it).navigate(action)

@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import androidx.navigation.Navigation
+import com.google.android.material.snackbar.Snackbar
 
 /**
  * A simple [Fragment] subclass.
@@ -29,9 +30,13 @@ class MainFragment : Fragment() {
         var txtName = view.findViewById<EditText>(R.id.txtName)
         btnStart.setOnClickListener {
             val playerName = txtName.text.toString()
-            var playerScore = 0
-            val action = MainFragmentDirections.actionGameFragment(playerName, playerScore)
-            Navigation.findNavController(it).navigate(action)
+            if(playerName == ""){
+                Snackbar.make(view, "You should give your name", Snackbar.LENGTH_SHORT).show()
+            } else {
+                var playerScore = 0
+                val action = MainFragmentDirections.actionGameFragment(playerName, playerScore)
+                Navigation.findNavController(it).navigate(action)
+            }
 
         }
     }
